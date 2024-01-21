@@ -8,5 +8,5 @@ I built this application to be mostly dynamic; most if not all of the front-end 
 - Golang
 - React
 - Next JS
-- gin-gonic
+- Gin
 - net/http
