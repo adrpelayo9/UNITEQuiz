@@ -1,0 +1,304 @@
+.app {
+    text-align: center;
+    height:100vh;
+}
+
+.landing-page {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 16px 50px 16px 50px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0.3) 0px 18px 36px -19px;
+
+    width: 80%;
+    height: auto;
+}
+
+.diff-card {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 20px 40px 20px 40px;
+    border-radius: 16px;
+    color: rgb(255, 255, 255);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0.3) 0px 18px 36px -19px;
+
+    width: 30%;
+    height: auto;
+}
+
+.green {
+    text-shadow: 0px 0px 8px green;
+}
+
+.orange {
+    text-shadow: 0px 0px 8px orange;
+}
+
+.red {
+    text-shadow: 0px 0px 8px red;
+}
+
+.question-card {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 20px 60px 40px 60px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0.3) 0px 18px 36px -19px;
+
+    width: 80%;
+    height: auto;
+}
+
+.option-holder {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.option {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 16px;
+    border: 4px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 8px;
+}
+
+.question-text {
+    color: whitesmoke;
+    font-size: 24px;
+}
+
+.hasnt-answered-text {
+    color: rgb(255, 16, 16);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.next-card {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 20px;
+    border-radius: 14px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0.3) 0px 18px 36px -19px;
+
+    width: 12%;
+    height: auto;
+    min-width: 180px;
+}
+
+.see-result-card {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 20px;
+    border-radius: 14px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0.3) 0px 18px 36px -19px;
+
+    width: 18%;
+    height: auto;
+}
+
+.final-result {
+    margin: 0 auto;
+    margin-top: 30px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    padding: 16px;
+    border-radius: 16px;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0.3) 0px 18px 36px -19px;
+
+    width: 50%;
+    height: auto;
+}
+
+.easy-button {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 128, 0, 0.8)
+    );
+    background-color: green;
+    border-width: 5px;
+    border: 5px solid black;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 24px;
+    margin: 15px;
+    min-width: 150px;
+}
+
+.medium-button {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(255, 140, 0, 0.8)
+    );
+    background-color: darkorange;
+    border-width: 5px;
+    border: 5px solid black;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 24px;
+    margin: 15px;
+    min-width: 150px;
+}
+
+.hard-button {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(139, 0, 0, 0.8)
+    );
+    background-color: darkred;
+    border-width: 5px;
+    border: 5px solid black;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 24px;
+    margin: 15px;
+    min-width: 150px;
+}
+
+.restart-button {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 159, 159, 0.7),
+        rgba(255, 0, 0, 0.7)
+    );
+    border-width: 5px;
+    border: 5px solid black;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 24px;
+}
+
+.get-finalscore-button {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 159, 159, 0.7),
+        rgba(255, 0, 0, 0.7)
+    );
+    border-width: 5px;
+    border: 5px solid black;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 24px;
+}
+
+.next-button {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.5),
+        rgba(0, 0, 0, 0.9)
+    );
+    border-width: 5px;
+    border: 5px solid black;
+    color: white;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 24px;
+}
+
+.bottom-space {
+    padding: 20px;
+}
+
+.footer {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.95),
+        rgba(0, 0, 0, 0.5)
+    );
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+}
+
+.footer-text {
+    color:white;
+    font-size: 8px;
+}
+.easy-button:hover,
+.medium-button:hover,
+.hard-button:hover,
+.restart-button:hover,
+.next-button:hover {
+    background-color: black;
+    color: rgb(233, 233, 233);
+}
+
+.option:hover {
+    background-color: lightblue;
+}
