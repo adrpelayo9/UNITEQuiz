@@ -23,7 +23,12 @@ export default function Home() {
     const BASE_URL = 'https://mighty-cove-41770-527d6e6e093b.herokuapp.com';
 
     useEffect(() => {
-        fetch(`${BASE_URL}/questions/${difficulty}/${currID}`)
+        fetch(`${BASE_URL}/questions/${difficulty}/${currID}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
             .then((data) => data.json())
             .then((data) => {
                 setCurrentQuestion(data);
@@ -31,7 +36,12 @@ export default function Home() {
     }, [difficulty, currID]);
 
     const getTotalQuestions = (diff) => {
-        fetch(`${BASE_URL}/totalquestions/${diff}`)
+        fetch(`${BASE_URL}/totalquestions/${diff}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
             .then((data) => data.json())
             .then((data) => {
                 setTotalQuestions(data);
