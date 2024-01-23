@@ -550,14 +550,19 @@ func getQuestionByID(id string, diff string) (*question, error) {
 	return nil, errors.New("question not found")
 }
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	}
+
 func main() {
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{"https://unite-quiz-dhza.vercel.app"},
-		AllowMethods: []string{"PUT", "PATCH", "POST", "DELETE", "GET"},
+		AllowMethods: []string{"PUT", "PATCH", "POST", "DELETE", "GET", "OPTIONS"},
 		AllowHeaders: []string{"Content-Type"},
 		AllowCredentials: true,
 	}))
+	
 
 	router.GET("/questions/:diff/:id", getCurrentQuestion)
 	router.GET("/totalquestions/:diff", getTotalQuestions)
