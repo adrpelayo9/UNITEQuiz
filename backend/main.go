@@ -3,9 +3,9 @@ package main
 import (
 	"errors"
 	"net/http"
+	"os"
 	"strconv"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -550,22 +550,26 @@ func getQuestionByID(id string, diff string) (*question, error) {
 	return nil, errors.New("question not found")
 }
 
-func enableCors(w *http.ResponseWriter) {
-	(*w).Header().Set("Access-Control-Allow-Origin", "*")
-	}
-
 func main() {
 	router := gin.Default()
-	router.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"https://unite-quiz-dhza.vercel.app"},
-		AllowMethods: []string{"PUT", "PATCH", "POST", "DELETE", "GET", "OPTIONS"},
-		AllowHeaders: []string{"Content-Type"},
-		AllowCredentials: true,
-	}))
-	
 
+	router.Use(func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "https://unite-quiz-dhza.vercel.app")
+		c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
+		c.Header("Access-Control-Allow-Headers", "Content-Type")
+	
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+	
+		c.Next()
+	})
+	
 	router.GET("/questions/:diff/:id", getCurrentQuestion)
 	router.GET("/totalquestions/:diff", getTotalQuestions)
 	router.POST("/questions/score", getScore)
-	router.Run("https://mighty-cove-41770-527d6e6e093b.herokuapp.com")
+
+	port := ":" + os.Getenv("PORT")
+	router.Run(port)
 }
