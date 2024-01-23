@@ -553,7 +553,7 @@ func getQuestionByID(id string, diff string) (*question, error) {
 func main() {
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"http://localhost:3000"},
+		AllowOrigins: []string{"https://unite-quiz-dhza.vercel.app"},
 		AllowMethods: []string{"PUT", "PATCH", "POST", "DELETE", "GET"},
 		AllowHeaders: []string{"Content-Type"},
 		AllowCredentials: true,
@@ -562,5 +562,5 @@ func main() {
 	router.GET("/questions/:diff/:id", getCurrentQuestion)
 	router.GET("/totalquestions/:diff", getTotalQuestions)
 	router.POST("/questions/score", getScore)
-	router.Run("localhost:8080")
+	router.Run("https://mighty-cove-41770-527d6e6e093b.herokuapp.com")
 }

@@ -20,7 +20,7 @@ export default function Home() {
     const [playerRank, setPlayerRank] = useState('');
     const [playerRankedImage, setPlayerRankedImage] = useState('');
 
-    const BASE_URL = 'http://localhost:8080';
+    const BASE_URL = 'https://mighty-cove-41770-527d6e6e093b.herokuapp.com';
 
     useEffect(() => {
         fetch(`${BASE_URL}/questions/${difficulty}/${currID}`)
