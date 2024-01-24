@@ -31,6 +31,11 @@ type userAnswer struct {
 	CurrentScore int `json:"currScore" binding:"required"`
 }
 
+type answerArray struct {
+	Answers []string `json:"ansArray" binding:"required"`
+	Difficulty string `json:"diff" binding:"required"`
+}
+
 var eQuestions = []question{
 	{
 		ID: "1", 
@@ -522,6 +527,38 @@ func validateScore(ansID int, ans string, diff string, scr int) int {
 	return scr
 }
 
+func getIncorrect(q *gin.Context) {
+	var inc []int
+	var ans answerArray
+	q.BindJSON(&ans)
+
+	switch ans.Difficulty {
+	case "easy":
+		for i := 0; i < len(eAnswers); i++ {
+			if (eAnswers[i].CorrectAns != ans.Answers[i]) {
+				inc = append(inc, eAnswers[i].ID)
+			}
+		}
+		break
+	case "medium":
+		for i := 0; i < len(mAnswers); i++ {
+			if (mAnswers[i].CorrectAns != ans.Answers[i]) {
+				inc = append(inc, mAnswers[i].ID)
+			}
+		}
+		break
+	case "hard":
+		for i := 0; i < len(hAnswers); i++ {
+			if (hAnswers[i].CorrectAns != ans.Answers[i]) {
+				inc = append(inc, hAnswers[i].ID)
+			}
+		}
+		break
+	}
+
+	q.JSON(http.StatusOK, inc)
+}
+
 func getQuestionByID(id string, diff string) (*question, error) {
 	switch diff {
 	case "easy":
@@ -569,6 +606,7 @@ func main() {
 	router.GET("/questions/:diff/:id", getCurrentQuestion)
 	router.GET("/totalquestions/:diff", getTotalQuestions)
 	router.POST("/questions/score", getScore)
+	router.POST("/questions/incorrect", getIncorrect)
 
 	port := ":" + os.Getenv("PORT")
 	router.Run(port)

@@ -12,6 +12,9 @@ export default function Home() {
     const [totalQuestions, setTotalQuestions] = useState(0);
     const [score, setScore] = useState(0);
     const [answer, setAnswer] = useState('');
+    const [ansArray, setAnsArray] = useState([]);
+    const [incorrect, setIncorrect] = useState([]);
+    const [hasIncorrectAns, setHasIncorrectAns] = useState(false);
     const [hasNotAnswered, setHasNotAnswered] = useState(false);
     const [currID, setCurrID] = useState(1);
     const [difficulty, setDifficulty] = useState('easy');
@@ -80,6 +83,7 @@ export default function Home() {
 
         getScore(currentID, answer, diff, score);
         setHasNotAnswered(false);
+        setAnsArray([...ansArray, answer]);
         setAnswer('');
         currentID++;
         setCurrID(currentID);
@@ -115,6 +119,9 @@ export default function Home() {
 
     const getPlayerRank = () => {
         setFinalResults(true);
+        getIncorrectQuestions();
+
+        if (((score / totalQuestions) * 100) < 100) setHasIncorrectAns(true);
 
         if ((score / totalQuestions) * 100 >= 90) {
             setPlayerRank('a Master');
@@ -137,6 +144,23 @@ export default function Home() {
         }
     };
 
+    const getIncorrectQuestions = () => {
+        fetch(`${BASE_URL}/questions/incorrect`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ansArray: ansArray,
+                diff: difficulty,
+            }),
+        })
+            .then((data) => data.json())
+            .then((data) => {
+                setIncorrect(data);
+            });
+    };
+
     const seeResults = (currentID, diff) => {
         if (answer === '') {
             verifyAnswer();
@@ -145,6 +169,7 @@ export default function Home() {
 
         setHasNotAnswered(false);
         getScore(currentID, answer, diff, score);
+        setAnsArray([...ansArray, answer]);
         setDisplayQuestions(false);
         setFinalResultScreen(true);
     };
@@ -160,6 +185,9 @@ export default function Home() {
         setAnswer('');
         setPlayerRank('');
         setPlayerRankedImage('');
+        setIncorrect([]);
+        setHasIncorrectAns(false);
+        setAnsArray([]);
     };
 
     return (
@@ -309,6 +337,15 @@ export default function Home() {
                                 {score} out of {totalQuestions} correct - (
                                 {(score / totalQuestions) * 100}%)
                             </h2>
+                            {hasIncorrectAns ? (
+                                <div>
+                                    <h2>You got these questions incorrect:</h2>
+                                    <h2>{[...incorrect.join(', ')]}</h2>
+                                </div>
+                            ) : (
+                                <div></div>
+                            )}
+
                             <div>
                                 <Image
                                     src={playerRankedImage}
